@@ -1,5 +1,3 @@
-
-
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from .config import Config
@@ -8,7 +6,6 @@ from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect
 
 app = Flask(__name__)
-# CORS(app, origins=['http://127.0.0.1:5173'])
 csrf = CSRFProtect(app)
 app.config.from_object(Config)
 

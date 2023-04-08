@@ -1,0 +1,62 @@
+.form-page, .movies-page{
+    margin-left: 1em;
+}
+
+
+h2{
+    margin-bottom: 1em;
+    margin-left: 3em;
+}
+
+.movies-page{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.form-group{
+    width: 60%;
+    margin-left: 4em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#file{
+    width: 20%;
+}
+
+#description{
+    height: 5em;
+}
+
+.card-container{
+    width: 25%;
+    margin: 0 auto;
+}
+
+.card{
+    display: flex !important;
+    flex-direction: row;
+    width: 100%;
+}
+
+.card img{
+    width: 50%;
+}
+
+.card-body{
+    width: 50%;
+}
+
+button{
+    width: 20%;
+    height: 2.5em;
+    border: none;
+    background: rgb(65, 128, 190);
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2em;
+}

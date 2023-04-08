@@ -1,5 +1,6 @@
 <template lang="">
-    <div>
+    <div class="form-page">
+        <h2>Upload Form</h2>
         <MoviesForm />
     </div>
 </template>

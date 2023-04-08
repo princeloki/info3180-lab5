@@ -34,7 +34,10 @@ def movies():
             
             poster_path = secure_filename(poster.filename)
             
-            poster.save(os.path.join(app.config['UPLOAD_FOLDER'], poster_path))
+            # poster.save(os.path.join(app.config['UPLOAD_FOLDER'], poster_path))
+            absolute_dir = os.path.abspath(os.curdir)
+            print(absolute_dir)
+            poster.save(os.path.join(absolute_dir,app.config['UPLOAD_FOLDER'],poster_path))
             
             moviemodel = MoviesProfile(
                 title = title,
@@ -54,6 +57,20 @@ def movies():
         return jsonify({
             "errors": form_errors(form)
         })
+        
+@app.route('/api/v1/movies', methods=['GET'])
+def get_movies():
+    movies = MoviesProfile.query.all()
+    for movie in movies:
+        print(url_for('get_poster', filename=movie.poster))
+    n_movies = [{"id":movie.id, "title":movie.title, "description":movie.description, "poster":"uploads\\"+movie.poster} for movie in movies]
+    return jsonify({"movies": n_movies})
+
+@app.route('/api/v1/posters/<filename>', methods=['GET'])
+def get_poster(filename):
+    uploads = app.config['UPLOAD_FOLDER']
+    link = os.path.join(uploads+"\\"+filename)
+    return link
 
 @app.route('/api/v1/csrf-token', methods=['GET'])
 def get_csrf():
